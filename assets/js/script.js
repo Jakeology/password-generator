@@ -7,8 +7,6 @@ var uppercasedChar = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
-var passwordLength;
-
 function getPassLength() {
 
   var getPasswordLength = window.prompt("How many characters would you like your password? (8-128)");
@@ -39,25 +37,33 @@ function getPasswordCharacters() {
   var promptLowercasedChar = window.confirm("Would you like your password to have lowercased letters? (Ok = YES | Cancel = NO)");
 
   if(promptLowercasedChar) {
-    
+    for(var i = 0; i < lowercasedChar.length; i++){
+      allPasswordCharacters.push(lowercasedChar[i]);
+    }
   }
 
   var promptUppercasedChar = window.confirm("Would you like your password to have uppercased letters? (Ok = YES | Cancel = NO)");
 
   if(promptUppercasedChar) {
-    
+    for(var i = 0; i < uppercasedChar.length; i++){
+      allPasswordCharacters.push(uppercasedChar[i]);
+    }
   }
 
   var promptNumericChar = window.confirm("Would you like your password to have numbers? (Ok = YES | Cancel = NO)");
 
   if(promptNumericChar) {
-    
+    for(var i = 0; i < numericChar.length; i++){
+      allPasswordCharacters.push(numericChar[i]);
+    }
   }
 
   var promptSpecialChar = window.confirm("Would you like your password to have special characters? (Ok = YES | Cancel = NO)");
 
   if(promptSpecialChar) {
-    
+    for(var i = 0; i < specialChar.length; i++){
+      allPasswordCharacters.push(specialChar[i]);
+    }
   }
 
 }
@@ -65,10 +71,9 @@ function getPasswordCharacters() {
 function generatePassword() {
   var getPasswordLength = getPassLength();
 
-  if(getPasswordLength) {
     getPasswordCharacters();
 
-  }
+  
 }
 
 // Write password to the #password input
