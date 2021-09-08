@@ -65,7 +65,6 @@ function getPasswordCharacters() {
       allPasswordCharacters.push(specialChar[i]);
     }
   }
-
 }
 
 function generatePassword() {
@@ -73,7 +72,16 @@ function generatePassword() {
 
     getPasswordCharacters();
 
-  
+    var password = "";
+
+    for(var i = 0; i < getPasswordLength; i++) {
+      var getRandomChar = Math.floor(Math.random() * allPasswordCharacters.length);
+      password += allPasswordCharacters[getRandomChar];
+      console.log(getRandomChar);
+    }
+
+    return password;
+    
 }
 
 // Write password to the #password input
