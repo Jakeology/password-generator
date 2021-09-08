@@ -7,8 +7,10 @@ var uppercasedChar = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
+var passwordLength;
 
 function getPassLength() {
+
   var getPasswordLength = window.prompt("How many characters would you like your password? (8-128)");
 
   if (getPasswordLength === null) {
@@ -17,8 +19,7 @@ function getPassLength() {
 
   if(!isNaN(getPasswordLength)) {
     if(getPasswordLength >= 8 && getPasswordLength <= 128) {
-      window.alert("You have choosen a password that meets the requirements");
-      return true;
+      return getPasswordLength;
     } else {
       window.alert("You have choosen a password that does not meets the requirements");
       return getPassLength();
@@ -29,9 +30,45 @@ function getPassLength() {
   }
 }
 
+var allPasswordCharacters;
+
+function getPasswordCharacters() {
+
+  allPasswordCharacters = [];
+
+  var promptLowercasedChar = window.confirm("Would you like your password to have lowercased letters? (Ok = YES | Cancel = NO)");
+
+  if(promptLowercasedChar) {
+    
+  }
+
+  var promptUppercasedChar = window.confirm("Would you like your password to have uppercased letters? (Ok = YES | Cancel = NO)");
+
+  if(promptUppercasedChar) {
+    
+  }
+
+  var promptNumericChar = window.confirm("Would you like your password to have numbers? (Ok = YES | Cancel = NO)");
+
+  if(promptNumericChar) {
+    
+  }
+
+  var promptSpecialChar = window.confirm("Would you like your password to have special characters? (Ok = YES | Cancel = NO)");
+
+  if(promptSpecialChar) {
+    
+  }
+
+}
+
 function generatePassword() {
   var getPasswordLength = getPassLength();
 
+  if(getPasswordLength) {
+    getPasswordCharacters();
+
+  }
 }
 
 // Write password to the #password input
