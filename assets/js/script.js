@@ -29,11 +29,9 @@ function getPasswordLength() {
 
 }
 
-var allPasswordCharacters;
-
 function getPasswordCharacters() {
 
-  allPasswordCharacters = [];
+  var allPasswordCharacters = [];
 
   var promptLowercasedChar = window.confirm("Would you like your password to have lowercased letters? (Ok = YES | Cancel = NO)");
 
@@ -66,12 +64,15 @@ function getPasswordCharacters() {
       allPasswordCharacters.push(specialChar[i]);
     }
   }
+
+  return allPasswordCharacters;
+
 }
 
 function generatePassword() {
   var passwordLength = getPasswordLength();
 
-  getPasswordCharacters();
+  var allPasswordCharacters = getPasswordCharacters();
 
       var password = "";
 
