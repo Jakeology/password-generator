@@ -21,7 +21,7 @@ function getPasswordLength() {
   }
 
   if(passwordLength < 8 || passwordLength > 128) {
-    window.alert("Your pasword length needs to be between 8 and 128");
+    window.alert("Your pasword length needs to be between 8 and 128 characters.");
     return getPasswordLength();
   }
 
@@ -30,38 +30,38 @@ function getPasswordLength() {
 }
 
 function getPasswordCharacters() {
-
-  var allPasswordCharacters = [];
+  var characterOptions = [];
 
   var promptLowercasedChar = window.confirm("Would you like your password to have lowercased letters? (Ok = YES | Cancel = NO)");
 
   if(promptLowercasedChar) {
-    for(var i = 0; i < lowercasedChar.length; i++){
-      allPasswordCharacters.push(lowercasedChar[i]);
-    }
+    characterOptions.push(lowercasedChar);
   }
 
   var promptUppercasedChar = window.confirm("Would you like your password to have uppercased letters? (Ok = YES | Cancel = NO)");
 
   if(promptUppercasedChar) {
-    for(var i = 0; i < uppercasedChar.length; i++){
-      allPasswordCharacters.push(uppercasedChar[i]);
-    }
+    characterOptions.push(uppercasedChar);
   }
 
   var promptNumericChar = window.confirm("Would you like your password to have numbers? (Ok = YES | Cancel = NO)");
 
   if(promptNumericChar) {
-    for(var i = 0; i < numericChar.length; i++){
-      allPasswordCharacters.push(numericChar[i]);
-    }
+    characterOptions.push(numericChar);
   }
 
   var promptSpecialChar = window.confirm("Would you like your password to have special characters? (Ok = YES | Cancel = NO)");
 
   if(promptSpecialChar) {
-    for(var i = 0; i < specialChar.length; i++){
-      allPasswordCharacters.push(specialChar[i]);
+    characterOptions.push(specialChar);
+  }
+  
+  var allPasswordCharacters = [];
+
+  for(var x = 0; x < characterOptions.length; x++) {
+    var getCharaterOption = characterOptions[x];
+    for(var y = 0; y < getCharaterOption.length; y++){
+      allPasswordCharacters.push(getCharaterOption[y]);
     }
   }
 
@@ -82,10 +82,9 @@ function generatePassword() {
       for(var i = 0; i < passwordLength; i++) {
         var getRandomChar = Math.floor(Math.random() * allPasswordCharacters.length);
         password += allPasswordCharacters[getRandomChar];
-        console.log(getRandomChar);
       }
 
-      return password;
+    return password;
     
 }
 
