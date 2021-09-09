@@ -56,7 +56,7 @@ function getPasswordCharacters() {
     characterOptions.push(specialChar);
   }
 
-  if(Array.isArray(characterOptions)) {
+  if(!characterOptions.length) {
     window.alert("You need to select at lease one character option.");
     return getPasswordCharacters();
   }
