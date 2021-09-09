@@ -7,6 +7,7 @@ var uppercasedChar = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
+//Function to get the users specified password length
 function getPasswordLength() {
 
   var passwordLength = window.prompt("How many characters would you like your password? (8-128)");
@@ -29,6 +30,7 @@ function getPasswordLength() {
 
 }
 
+//Function to get the characters used in the password specified by the user
 function getPasswordCharacters() {
   var characterOptions = [];
 
@@ -74,6 +76,7 @@ function getPasswordCharacters() {
 
 }
 
+//Function to generate the password
 function generatePassword() {
   var passwordLength = getPasswordLength();
 
