@@ -70,17 +70,20 @@ function getPasswordCharacters() {
 function generatePassword() {
   var getPasswordLength = getPassLength();
 
-    getPasswordCharacters();
+    if(!getPassLength === null) {
+      getPasswordCharacters();
 
-    var password = "";
+      var password = "";
 
-    for(var i = 0; i < getPasswordLength; i++) {
-      var getRandomChar = Math.floor(Math.random() * allPasswordCharacters.length);
-      password += allPasswordCharacters[getRandomChar];
-      console.log(getRandomChar);
+        for(var i = 0; i < getPasswordLength; i++) {
+          var getRandomChar = Math.floor(Math.random() * allPasswordCharacters.length);
+          password += allPasswordCharacters[getRandomChar];
+          console.log(getRandomChar);
+        }
+
+      return password;
+      
     }
-
-    return password;
     
 }
 
