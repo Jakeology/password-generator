@@ -55,6 +55,11 @@ function getPasswordCharacters() {
   if(promptSpecialChar) {
     characterOptions.push(specialChar);
   }
+
+  if(Array.isArray(characterOptions)) {
+    window.alert("You need to select at lease one character option.");
+    return getPasswordCharacters();
+  }
   
   var allPasswordCharacters = [];
 
@@ -77,6 +82,7 @@ function generatePassword() {
     }
 
     var allPasswordCharacters = getPasswordCharacters();
+
     var password = "";
 
       for(var i = 0; i < passwordLength; i++) {
