@@ -99,7 +99,12 @@ function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
+    if(password === undefined) {
+      return;
+    }
+
   passwordText.value = password;
+  
 
 }
 
