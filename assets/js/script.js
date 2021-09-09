@@ -7,25 +7,26 @@ var uppercasedChar = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
-function getPassLength() {
+function getPasswordLength() {
 
-  var getPasswordLength = window.prompt("How many characters would you like your password? (8-128)");
+  var passwordLength = window.prompt("How many characters would you like your password? (8-128)");
 
-  if (getPasswordLength === null) {
+  if(passwordLength === null) {
     return;
   }
 
-  if(!isNaN(getPasswordLength)) {
-    if(getPasswordLength >= 8 && getPasswordLength <= 128) {
-      return getPasswordLength;
-    } else {
-      window.alert("You have choosen a password that does not meets the requirements");
-      return getPassLength();
-    }
-  } else {
-    window.alert("Invalid input. Please put a valid number between 8-128");
-    return getPassLength();
+  if(isNaN(passwordLength)) {
+    window.alert("You need to enter a valid number between 8 and 128.");
+    return getPasswordLength();
   }
+
+  if(passwordLength < 8 || passwordLength > 128) {
+    window.alert("Your pasword length needs to be between 8 and 128");
+    return getPasswordLength();
+  }
+
+  return passwordLength;
+
 }
 
 var allPasswordCharacters;
@@ -68,22 +69,19 @@ function getPasswordCharacters() {
 }
 
 function generatePassword() {
-  var getPasswordLength = getPassLength();
+  var passwordLength = getPasswordLength();
 
-    if(!getPassLength === null) {
-      getPasswordCharacters();
+  getPasswordCharacters();
 
       var password = "";
 
-        for(var i = 0; i < getPasswordLength; i++) {
+        for(var i = 0; i < passwordLength; i++) {
           var getRandomChar = Math.floor(Math.random() * allPasswordCharacters.length);
           password += allPasswordCharacters[getRandomChar];
           console.log(getRandomChar);
         }
 
       return password;
-      
-    }
     
 }
 
