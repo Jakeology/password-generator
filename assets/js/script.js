@@ -10,17 +10,20 @@ var generateBtn = document.querySelector("#generate");
 //Function to get the users specified password length
 function getPasswordLength() {
 
-  var passwordLength = parseInt(window.prompt("How many characters would you like your password? (8-128)"));
+  //Prompt user to select how many characters their password should be.
+  var passwordLength = window.prompt("How many characters would you like your password? (8-128)");
 
   if(passwordLength === null) {
     return;
   }
 
+  //Prompt user if the password length is not a valid number.
   if(isNaN(passwordLength)) {
     window.alert("You need to enter a valid number between 8 and 128.");
     return getPasswordLength();
   }
 
+  //Prompt user if the password length is less than 8 characters and more than 128 characters.
   if(passwordLength < 8 || passwordLength > 128) {
     window.alert("Your pasword length needs to be between 8 and 128 characters.");
     return getPasswordLength();
@@ -34,37 +37,43 @@ function getPasswordLength() {
 function getPasswordCharacters() {
   var characterOptions = [];
 
+  //Prompt user to select is their password should include lowercased characters.
   var promptLowercasedChar = window.confirm("Would you like your password to have lowercased letters? (Ok = YES | Cancel = NO)");
 
   if(promptLowercasedChar) {
     characterOptions.push(lowercasedChar);
   }
 
+  //Prompt user to select is their password should include uppercase characters.
   var promptUppercasedChar = window.confirm("Would you like your password to have uppercased letters? (Ok = YES | Cancel = NO)");
 
   if(promptUppercasedChar) {
     characterOptions.push(uppercasedChar);
   }
 
+  //Prompt user to select is their password should include numeric characters.
   var promptNumericChar = window.confirm("Would you like your password to have numbers? (Ok = YES | Cancel = NO)");
 
   if(promptNumericChar) {
     characterOptions.push(numericChar);
   }
 
+  //Prompt user to select is their password should include special characters.
   var promptSpecialChar = window.confirm("Would you like your password to have special characters? (Ok = YES | Cancel = NO)");
 
   if(promptSpecialChar) {
     characterOptions.push(specialChar);
   }
 
-  if(!characterOptions.length) {
+  //Prompt user if they did not select at least one character option.
+  if(characterOptions === null || !characterOptions.length) {
     window.alert("You need to select at lease one character option.");
     return getPasswordCharacters();
   }
   
   var allPasswordCharacters = [];
 
+  //Loop to add all the characters the user selected to one array
   for(var x = 0; x < characterOptions.length; x++) {
     var getCharaterOption = characterOptions[x];
     for(var y = 0; y < getCharaterOption.length; y++){
@@ -88,6 +97,8 @@ function generatePassword() {
 
     var password = "";
 
+      //Loop to generate random password with Math.random() and select 
+      //that character by the random number in the character array.
       for(var i = 0; i < passwordLength; i++) {
         var getRandomChar = Math.floor(Math.random() * allPasswordCharacters.length);
         password += allPasswordCharacters[getRandomChar];
