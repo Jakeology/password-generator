@@ -10,7 +10,7 @@ var generateBtn = document.querySelector("#generate");
 //Function to get the users specified password length
 function getPasswordLength() {
 
-  var passwordLength = window.prompt("How many characters would you like your password? (8-128)");
+  var passwordLength = parseInt(window.prompt("How many characters would you like your password? (8-128)"));
 
   if(passwordLength === null) {
     return;
